@@ -4,7 +4,7 @@ var elasticsearch = require('elasticsearch');
 var config = {
     firebaseUrl:'https://mdtbackoffice.firebaseio.com/PRODUCTION/',
     elasticSearchUrl: 'http://104.236.34.233:9200',
-    index: 'fq',
+    index: 'mdt',
     type: 'frieghtQuotes'
 }
 var rootRef = new Firebase(config.firebaseUrl);
