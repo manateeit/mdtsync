@@ -1,0 +1,381 @@
+[
+  {
+    "name": "users",
+    "fields": {
+      "email": {
+        "type": "string"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "companies",
+    "fields": {
+      "contact": {
+        "collection": "contacts",
+        "via": "company"
+      },
+      "locations": {
+        "collection": "locations",
+        "via": "company"
+      },
+      "Tags": {
+        "collection": "tagrelations",
+        "via": "company"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Address": {
+        "type": "string"
+      },
+      "Address2": {
+        "type": "text"
+      },
+      "City": {
+        "type": "string"
+      },
+      "State": {
+        "type": "string"
+      },
+      "Zipcode": {
+        "type": "string"
+      },
+      "Country": {
+        "type": "text"
+      },
+      "firebaseId": {
+        "type": "text"
+      }
+    }
+  },
+  {
+    "name": "tags",
+    "fields": {
+      "tagrelations": {
+        "collection": "tagrelations",
+        "via": "tag"
+      },
+      "tag": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "tagrelations",
+    "fields": {
+      "company": {
+        "object": "companies"
+      },
+      "tag": {
+        "object": "tags"
+      }
+    }
+  },
+  {
+    "name": "contacts",
+    "fields": {
+      "LastName": {
+        "type": "string"
+      },
+      "FirstName": {
+        "type": "string"
+      },
+      "CellPhone": {
+        "type": "string"
+      },
+      "WorkPhone": {
+        "type": "string"
+      },
+      "JobTitle": {
+        "type": "string"
+      },
+      "Email": {
+        "type": "string"
+      },
+      "firebaseId": {
+        "type": "string"
+      },
+      "company": {
+        "object": "companies"
+      }
+    }
+  },
+  {
+    "name": "locations",
+    "fields": {
+      "Name": {
+        "type": "string"
+      },
+      "Address": {
+        "type": "string"
+      },
+      "Address2": {
+        "type": "text"
+      },
+      "City": {
+        "type": "string"
+      },
+      "State": {
+        "type": "string"
+      },
+      "Zipcode": {
+        "type": "string"
+      },
+      "Country": {
+        "type": "text"
+      },
+      "firebaseId": {
+        "type": "text"
+      },
+      "company": {
+        "object": "companies"
+      }
+    }
+  },
+  {
+    "name": "materialOffers",
+    "fields": {
+      "propertiesPrint": {
+        "collection": "propertiesPrint",
+        "via": "materialOffer"
+      },
+      "propertiesProvided": {
+        "collection": "propertiesProvided",
+        "via": "materialOffer"
+      },
+      "propertiesTested": {
+        "collection": "propertiesTested",
+        "via": "materialOffers"
+      },
+      "Date": {
+        "type": "string"
+      },
+      "firebaseId": {
+        "type": "string"
+      },
+      "MonthlyVolume": {
+        "type": "string"
+      },
+      "Price": {
+        "type": "string"
+      },
+      "firebasePropertiesPrint": {
+        "collection": "firebasePropertiesPrint",
+        "via": "materialOfferId"
+      }
+    }
+  },
+  {
+    "name": "specifications",
+    "fields": {
+      "propertiesPrint": {
+        "collection": "propertiesPrint",
+        "via": "specification"
+      },
+      "propertiesProvided": {
+        "collection": "propertiesProvided",
+        "via": "specification"
+      },
+      "propertiesTested": {
+        "collection": "propertiesTested",
+        "via": "specification"
+      },
+      "commonName": {
+        "type": "string"
+      },
+      "keyValue": {
+        "type": "string"
+      },
+      "property": {
+        "type": "string"
+      },
+      "testMethod": {
+        "type": "string"
+      },
+      "units": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "mdtProductIds",
+    "fields": {
+      "Type": {
+        "object": "mdtProductIdTypes"
+      },
+      "Category": {
+        "object": "mdtProductIdCategory"
+      },
+      "MoldingGrade": {
+        "object": "mdtProductIdMoldingGrade"
+      },
+      "Form": {
+        "object": "mdtProductIdForm"
+      },
+      "Grade": {
+        "object": "mdtProductIdGrade"
+      },
+      "Color": {
+        "object": "mdtProductIdColor"
+      },
+      "MeltRangeLow": {
+        "type": "string"
+      },
+      "MeltRangeHigh": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "mdtProductIdTypes",
+    "fields": {
+      "mdtProductIds": {
+        "collection": "mdtProductIds",
+        "via": "Type"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "mdtProductIdCategory",
+    "fields": {
+      "mdtProductIds": {
+        "collection": "mdtProductIds",
+        "via": "Category"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "mdtProductIdMoldingGrade",
+    "fields": {
+      "mdtProductIds": {
+        "collection": "mdtProductIds",
+        "via": "MoldingGrade"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "mdtProductIdForm",
+    "fields": {
+      "mdtProductIds": {
+        "collection": "mdtProductIds",
+        "via": "Form"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "mdtProductIdGrade",
+    "fields": {
+      "mdtProductIds": {
+        "collection": "mdtProductIds",
+        "via": "Grade"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "mdtProductIdColor",
+    "fields": {
+      "mdtProductIds": {
+        "collection": "mdtProductIds",
+        "via": "Color"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "propertiesPrint",
+    "fields": {
+      "value": {
+        "type": "string"
+      },
+      "specification": {
+        "object": "specifications"
+      },
+      "materialOffer": {
+        "object": "materialOffers"
+      }
+    }
+  },
+  {
+    "name": "propertiesProvided",
+    "fields": {
+      "value": {
+        "type": "string"
+      },
+      "specification": {
+        "object": "specifications"
+      },
+      "materialOffer": {
+        "object": "materialOffers"
+      }
+    }
+  },
+  {
+    "name": "propertiesTested",
+    "fields": {
+      "value": {
+        "type": "string"
+      },
+      "specification": {
+        "object": "specifications"
+      },
+      "materialOffers": {
+        "object": "materialOffers"
+      }
+    }
+  },
+  {
+    "name": "firebasePropertiesPrint",
+    "fields": {
+      "firebaseurl": {
+        "type": "string"
+      },
+      "materialOfferId": {
+        "object": "materialOffers"
+      }
+    }
+  }
+]

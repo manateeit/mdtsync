@@ -5,7 +5,7 @@ var config = {
     firebaseUrl:'https://mdtbackoffice.firebaseio.com/PRODUCTION/',
     elasticSearchUrl: 'http://104.236.34.233:9200',
     index: 'mdt',
-    type: 'frieghtQuotes'
+    type: 'freightQuotes'
 }
 var rootRef = new Firebase(config.firebaseUrl);
  
