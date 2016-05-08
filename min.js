@@ -1,12 +1,12 @@
-var Firebase = require('firebase');
+var Fiiebase = require('firebase');
 var elasticsearch = require('elasticsearch');
 var fs = require('fs');
  
 var config = {
     firebaseUrl:'https://mdtbackoffice.firebaseio.com/PRODUCTION/',
     elasticSearchUrl: 'http://mdt-es-01.mediathread.io:9200',
-    index: 'testing',
-    type: 'minIn'
+    index: 'material',
+    type: 'In'
 }
 var rootRef = new Firebase(config.firebaseUrl);
  
@@ -21,6 +21,23 @@ fqRef.on('child_changed', upsert);
 fqRef.on('child_removed', remove);
  
 function upsert(snapshot){
+var snap = snapshot.val();
+	if (snap.material.mr1 == undefined){
+	  if (snap.material.MeltRange == undefined){
+	   snap.material.MeltRange = "0-0"
+	   snap.material.mr1 = 0;
+           snap.material.mr2 = 0;
+	  } else { 
+	   var mr = snap.material.MeltRange;
+	   snap.material.mr1 = parseInt(mr.substr(0, mr.indexOf('-')));
+           snap.material.mr2 = parseInt(mr.substr(mr.indexOf('-') + 1, mr.length));
+	  }
+	
+	}
+	console.log("mr1: " +  snap.material.mr1 + " is typeof : " + typeof  snap.material.mr1); 
+
+
+/* 
     client.index({
         index: config.index,
         type: config.type,
@@ -52,6 +69,7 @@ function upsert(snapshot){
         }
     })
  
+*/
 }
  
 function remove(snapshot){
