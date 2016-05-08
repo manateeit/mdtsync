@@ -29,20 +29,21 @@ var snap = snapshot.val();
            snap.material.mr2 = 0;
 	  } else { 
 	   var mr = snap.material.MeltRange;
-	   snap.material.mr1 = parseInt(mr.substr(0, mr.indexOf('-')));
-           snap.material.mr2 = parseInt(mr.substr(mr.indexOf('-') + 1, mr.length));
+	    var mr1  = mr.substr(0, mr.indexOf('-'));
+        var mr2  = mr.substr(mr.indexOf('-') + 1, mr.length);
+        var intmr1 = parseInt(mr1);
+        var intmr2 = parseInt(mr2);
+        snap.material.mr1 = intmr1;
+        snap.material.mr2 = intmr2;
 	  }
 	
 	}
-	console.log("mr1: " +  snap.material.mr1 + " is typeof : " + typeof  snap.material.mr1); 
-
-
-/* 
+ 
     client.index({
         index: config.index,
         type: config.type,
         id: snapshot.key(),
-        body: snapshot.val()
+        body: snap
     }, function(err, response){
         if(err){
             var dataError = snapshot.key() + ": " + snapshot.val().contact.id + "\n";
@@ -69,7 +70,6 @@ var snap = snapshot.val();
         }
     })
  
-*/
 }
  
 function remove(snapshot){
