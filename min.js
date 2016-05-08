@@ -22,13 +22,15 @@ fqRef.on('child_removed', remove);
  
 function upsert(snapshot){
 var snap = snapshot.val();
-	if (snap.material.mr1 == undefined){
+
+
+	
 	  if (snap.material.MeltRange == undefined){
 	   snap.material.MeltRange = "0-0"
 	   snap.material.mr1 = 0;
            snap.material.mr2 = 0;
 	  } else { 
-	   var mr = snap.material.MeltRange;
+	    var mr = snap.material.MeltRange;
 	    var mr1  = mr.substr(0, mr.indexOf('-'));
         var mr2  = mr.substr(mr.indexOf('-') + 1, mr.length);
         var intmr1 = parseInt(mr1);
@@ -37,7 +39,7 @@ var snap = snapshot.val();
         snap.material.mr2 = intmr2;
 	  }
 	
-	}
+	
  
     client.index({
         index: config.index,
