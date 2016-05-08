@@ -46,18 +46,19 @@ var snap = snapshot.val();
         body: snap
     }, function(err, response){
         if(err){
-            var dataError = snapshot.key() + ": " + snapshot.val().contact.id + "\n";
+            var dataError = snapshot.key() + ": " + snapshot.val().contact.id + " "+ err + "\n";
             fs.appendFile(config.type + ".error.txt", dataError, function(error) {
                 if (error) {
                     return console.log(error);
                 } else {
                     console.log("Error Indexing: " + snapshot.key());
+                    
                 }
             });
         }
         if (response) {	
             if (!err){
-                console.log("Indexing - ", snapshot.key() );
+                //console.log("Indexing - ", snapshot.key() );
                 var dataSuccess = snapshot.key() + ": " + snapshot.val().contact.id + "\n";
                 fs.appendFile(config.type + ".success.txt", dataSuccess, function(err2) {
                 if (err2) {
