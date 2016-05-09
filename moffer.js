@@ -14,7 +14,7 @@ var client = new elasticsearch.Client({
     host: config.elasticSearchUrl
 });
  
-var fqRef = rootRef.child('materialOffer');
+var fqRef = rootRef.child('materialOffers');
  
 fqRef.on('child_added', upsert);
 fqRef.on('child_changed', upsert);
